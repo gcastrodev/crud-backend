@@ -1,11 +1,12 @@
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
+import cors from 'cors'
 
 const prisma = new PrismaClient();
 
 const app = express()
 app.use(express.json())
-
+app.use(cors())
 
 
 app.get('/usuarios', async (req, res) => {
@@ -58,6 +59,9 @@ app.delete('/usuarios/:id', async (req, res) => {
 });
 
 app.listen(3000)
+//  http://localhost:3000
+
+
 /* 
     GET - Buscar uma informação dentro do servidor
     POST - Inserir uma informação dentro do servidor
